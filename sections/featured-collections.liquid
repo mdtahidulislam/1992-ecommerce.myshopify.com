@@ -1,0 +1,221 @@
+{% assign featured_collection = section.settings.featured_collection %}
+
+<section class="new-items-area product-items section-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="section-header">
+                    <h4 class="section-title"> {{ section.settings.title }} </h4>
+                    <p class="section-para"> {{ section.settings.sub_title }} </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="product-slider owl-carousel owl-theme">
+                {% for product in collections[featured_collection].products limit: 5 %}
+
+                    <div class="product-wrapper">
+                        <div class="pro-img">
+                            <a href="{{ product.url | within: collection }}">
+                                <img src=" {{ product.featured_image.src | img_url: 'medium' }}" class="img-fluid" alt="">
+                            </a>
+                            <div class="product-action text-center">
+                                <div class="product-action-btn mb-20">
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Shoppingb Cart">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </a>
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Wishlist">
+                                        <i class="far fa-heart"></i>
+                                    </a>
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="View More">
+                                        <i class="fas fa-plus"></i>
+                                    </a>
+                                </div>
+                                <div class="pro-rating mb-10">
+                                    <a href="#"><i class="fas fa-star"></i></a>
+                                    <a href="#"><i class="fas fa-star"></i></a>
+                                    <a href="#"><i class="fas fa-star"></i></a>
+                                    <a href="#"><i class="fas fa-star"></i></a>
+                                    <a href="#"><i class="fas fa-star"></i></a>
+                                </div>
+                            </div>
+                            <p class="promo-text mb-0 editors-choice">Editor’s choice</p>                        
+                        </div>
+                        <div class="pro-text">
+                            <div class="pro-title">
+                                <h6>
+                                    <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+                                </h6>
+                                <p class="pro-price mb-0">{{ product.price | money }}</p>
+                            </div>
+                        </div>
+
+
+
+
+<!--product form-->
+{% assign myvariant = product.selected_or_first_available_variant %}
+<form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-{{ product.handle }}">
+
+    <!--product variants-->
+    {% unless product.has_only_default_variant %}
+
+        {% for option in product.options_with_values %}
+
+            <div class="single-product__option-wrapper js">
+
+                {% assign option-name = option.name | downcase %}
+
+                <div class="js-single-product-option-{{ option-name }} single-product-option-{{ option-name }}"
+                     id="SingleOptionSelector-{{ forloop.index0 }}">
+
+                    {% for value in option.values %}
+
+                        {% assign product-handle = product.handle %}
+
+                        {% assign is_color = false %}
+
+                        {% assign stripped-value = value | split: ' ' | last | handle %}
+
+                        {% if option-name contains 'color' or option-name contains 'colour' %}
+
+                            {% assign is_color = true %}
+
+                        {% endif %}
+
+                        {% if is_color %}
+
+                            <input type="radio" name="{{ option-name }}-{{ product-handle }}"
+                                   class="single-option-selector single-product-option-{{ option-name }}__input js-radio-button"
+                                   data-single-option-selector
+                                   data-index="option{{ option.position }}"
+                                   value="{{ value | escape }}"
+                                   data-color="{{ value | handleize }}"
+                                   {% if option.selected_value == value %}checked="checked"{% endif %}
+                                   id="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"/>
+
+                            <label for="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"
+                                   class="single-product-option-{{ option-name }}__label {% if stripped-value contains 'white' %}single-product-option-{{ option-name }}__label--white{% endif %}"
+                                   style="background-color: {{ stripped-value }};">
+
+                                {% include 'icon-check' %}
+
+                            </label>
+
+                        {% else %}
+
+                            <input type="radio" name="{{ option-name }}-{{ product-handle }}"
+                                   class="single-option-selector single-product-option-{{ option-name }}__input"
+                                   data-single-option-selector
+                                   data-index="option{{ option.position }}"
+                                   value="{{ value | escape }}"
+                                   {% if option.selected_value == value %}checked="checked"{% endif %}
+                                   id="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"/>
+
+                            <label for="variant_{{ option-name }}-{{ product-handle }}-{{ forloop.index0 }}"
+                                   class="single-product-option-{{ option-name }}__label">{{ value }}</label>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    {% endunless %}
+
+    <select name="id" class="no-js" data-product-select>
+        {% for variant in product.variants %}
+            <option
+                    {% if variant == myvariant %}selected="selected"{% endif %}
+                    {% unless variant.available %}disabled="disabled"{% endunless %}
+                    value="{{ variant.id }}">
+                {{ variant.title }}
+            </option>
+        {% endfor %}
+    </select>
+    <!--end product variants-->
+
+    <!--product add to cart-->
+    <button
+            class="single-product__add-to-cart u-b6 js-ajax-add-to-cart"
+            type="submit"
+            name="add"
+            data-add-to-cart
+            {% unless myvariant.available %}disabled="disabled"{% endunless %}>
+
+        <span data-add-to-cart-text>
+            {% if myvariant.available %}
+                {{ 'products.product.add_to_cart' | t }}
+            {% else %}
+                {{ 'products.product.sold_out' | t }}
+            {% endif %}
+        </span>
+
+    </button>
+    <!--end product add to cart-->
+
+</form>
+<!--end product form-->
+
+
+
+
+
+
+
+
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% schema %}
+{
+    "name": {
+        "en" : "Featured Collection"
+    },
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": {
+                "en" : "Heading"
+            },
+            "default": {
+                "en" : "New Items"
+            }
+        },
+        {
+            "type": "text",
+            "id": "sub_title",
+            "label": {
+                "en" : "Sub Heading"
+            },
+            "default": {
+                "en" : "Spring & Summer 2015 Collection"
+            }
+        },
+        {
+            "type": "collection",
+            "id": "featured_collection",
+            "label": "Collection"
+        }
+    ],
+    "presets": [
+        {
+            "category": {
+                "en" : "Collection"
+            },
+            "name": {
+                "en" : "New Item"
+            }
+        }
+    ]
+}
+{% endschema %}

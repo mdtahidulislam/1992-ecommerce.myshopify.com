@@ -1,0 +1,26 @@
+<div class="customer-form is_selected" id="log-canvas">
+    {% form 'customer_login' %}
+        <div class="register-header form-header">
+            <div class="formh-eader-title">Sign In</div>
+            <i class="fa fa-times close"></i>
+        </div>
+        {{ form.errors | default_errors }}
+        <div class="form-input-wrapper">
+            <p class="form-row">
+                <label for="email">Email</label>
+                <input type="email" name="customer[email]"  >
+            </p>
+            <p class="form-row">
+                <label for="password">Password</label>
+                <input type="password" name="customer[password]"  >
+            </p>
+            <input type="submit"  value="Sign In" class="mb-3 text-uppercase">
+            <p class="form-row">
+                New customer? <span class="create-account">Create your account</span>
+            </p>
+            <p class="form-row">
+                Lost password? <span class="rec-pass">Recover password</span>
+            </p>
+        </div>
+    {% endform %}
+</div>

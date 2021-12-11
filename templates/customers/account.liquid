@@ -1,0 +1,89 @@
+<!-- /templates/customers/account.liquid -->
+<div class="container-fluid">
+    <h2 class="text-center mb-5">My Account</h2>
+</div>
+<div class="container">
+      <div class="row">
+         <div class="col-12 col-md-3">
+            <nav class="">
+               <ul class="ul_none is_sticky_inner">
+                  <li class="mb-3">
+                     <a class="" href="/account">Dashboard</a>
+                  </li>
+                  <li class="mb-3">
+                     <a class="" href="/account/addresses">Addresses (0)</a>
+                  </li>
+                  <li class="mb-3">
+                     <a class="" href="/search/?view=wish">Wishlist (<span class="jswcount">0</span>)</a>
+                  </li>
+                  <li class="">
+                    <a class="" href="/account/logout" data-no-instant="">Logout</a>
+                  </li>
+               </ul>
+            </nav>
+         </div>
+         <div class="col-12 col-md-9">
+         <div class="theiaStickySidebar">
+             <h5 class="mb-3">Hello <strong>{{ customer.name}}</strong> (not <strong>{{ customer.name}}</strong> ? <a href="/account/logout">Log out</a>)
+             </h5>
+            <h4 class="mb-3"><strong>Order History</strong></h4>
+            {% paginate customer.orders by 20 %}
+                {% if customer.orders.size != 0 %}
+
+                <table class="responsive-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">{{ customer.orders.order_number }}</th>
+                        <th scope="col">{{ customer.orders.date }}</th>
+                        <th scope="col">{{ customer.orders.payment_status }}</th>
+                        <th scope="col">{{ customer.orders.fulfillment_status }}</th>
+                        <th scope="col">{{ customer.orders.total }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for order in customer.orders %}
+                        <tr>
+                        <th data-label="{{ customer.orders.order_number }}" scope="row">
+                            <a href="{{ order.customer_url }}" class="btn btn--secondary btn--small" aria-label="{{ customer.orders.order_number_link }}">{{ order.name }}</a>
+                        </th>
+                        <td data-label="{{ customer.orders.date }}">{{ order.created_at | time_tag: format: 'date' }}</td>
+                        <td data-label="{{ customer.orders.payment_status }}">{{ order.financial_status_label }}</td>
+                        <td data-label="{{ customer.orders.fulfillment_status }}">{{ order.fulfillment_status_label }}</td>
+                        <td data-label="{{ customer.orders.total }}">{{ order.total_price | money }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                {% else %}
+
+                <p>
+                    Your orders are {{ customer.orders_count }}. You haven't placed any orders yet.
+                    <a class="" href="/collections/all?sort_by=best-selling">Please make your first order.</a> 
+                </p>
+
+                {% endif %}
+                {%- if paginate.pages > 1 -%}
+                {% include 'pagination', paginate: paginate %}
+                {%- endif -%}
+            {% endpaginate %}
+            
+            <p class="mt__40"><strong>Account details :</strong></p>
+            <div class="table-responsive">   
+                <table>
+                    <tbody>
+                    <tr>
+                        <td class="text-left"><strong>Name:</strong></td>
+                        <td>{{ customer.name}}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-left"><strong>E-mail:</strong></td>
+                        <td>{{ customer.email }}</td>
+                    </tr></tbody>
+                </table>
+            </div>
+         </div>
+         </div>
+      </div>
+    </div>
+    </div>

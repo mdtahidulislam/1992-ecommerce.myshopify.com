@@ -1,0 +1,151 @@
+{% capture video_layout %}
+    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+        <div class="video-box">
+            <div class="video-container">
+                <div class="video-wrapper">                            
+                    <div class="embed-responsive embed-responsive-16by9">
+                        
+                        {% if section.settings.video_url == blank %}
+                            <iframe class="embed-responsive-item" src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+                        {% else %}
+                            {% if section.settings.video_url.type == "youtube" %}
+                                <iframe class="embed-responsive-item" src="//www.youtube.com/embed/{{ section.settings.video_url.id }}?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+                            {% endif %}
+                            {% if section.settings.video_url.type == "vimeo" %}
+                                <iframe class="embed-responsive-item" src="//player.vimeo.com/video/{{ section.settings.video_url.id }}?byline=0&portrait=0&badge=0" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+                            {% endif %}
+                        {% endif %}
+                        
+                    </div>
+                </div>                            
+                <div class="video-text">
+                    <p class="video-campaign"> {{ section.settings.video_title }} </p>
+                    <p class="video-model">{{ section.settings.video_model }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endcapture %}
+
+
+<section class="girl-video-area section-area">
+    <div class="container">
+        <div class="row">
+
+            {% if section.settings.layout == 'left' %}
+                {{ video_layout }}
+            {% endif %}
+
+            <div class="col-xl-6 col-lg-7 col-md-7 col-sm-12 margin-{{ section.settings.layout }}">
+                <div class="lookbook-box">
+                    <div class="lookbook-text">
+                        <h2 class="lookbook-title"> {{ section.settings.image_title }} </h2>
+                        <p class="lookbook-para"> {{ section.settings.image_subtitle }} </p>
+                        <a href=" {{ section.settings.image_link }} " class="go-link">
+                            <i class="fas fa-angle-double-right"></i>
+                        </a>
+                    </div>
+                    <img src=" {{ section.settings.image | img_url: '470x630' }} " alt=" {{ section.settings.image_alt }} " class="lookbook-img">
+                </div>
+            </div>
+            
+            {% if section.settings.layout == 'right' %}
+                {{ video_layout }}
+            {% endif %}
+
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name" : {
+        "en" : "Video CTA"
+    },
+    "settings" : [
+        {
+            "type": "select",
+            "id": "layout",
+            "label": "Video position",
+            "default": "right",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left side"
+                },
+                {
+                    "value": "right",
+                    "label": "Right side"
+                }
+            ]
+        },
+        {
+            "type": "video_url",
+            "id": "video_url",
+            "label": "Video Link",
+            "accept": ["youtube", "vimeo"],
+            "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        },
+        {
+            "type": "text",
+            "id": "video_title",
+            "label": "Video Title",
+            "default": {
+                "en" : "Spring grils video campaign 2015"
+            }
+        },
+        {
+            "type": "text",
+            "id": "video_model",
+            "label": "Video Model",
+            "default": {
+                "en" : "Models: Alicia, Emily, Heather & Molly"
+            }
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Upload Image"
+        },
+        {
+            "type": "text",
+            "id": "image_title",
+            "label": "Image Title",
+            "default": {
+                "en" : "Spring Girls"
+            }
+        },
+        {
+            "type": "text",
+            "id": "image_subtitle",
+            "label": "Image Subtitle",
+            "default": {
+                "en" : "Girl Lookbook 2015"
+            }
+        },
+        {
+            "type": "text",
+            "id": "image_alt",
+            "label": "Image Alter Text",
+            "default": {
+                "en" : "Image"
+            }
+        },
+        {
+            "type": "url",
+            "id": "image_link",
+            "label": "Link"
+        }
+    ],
+    "presets": [
+        {
+            "name": {
+                "en": "Video with Image"
+            }, 
+            "category": {
+                "en": "Image"
+            }
+        }
+    ]
+}
+{% endschema %}

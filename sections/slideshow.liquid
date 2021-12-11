@@ -1,0 +1,119 @@
+<!-- start slider area -->
+<section class="slider-area section-area">
+    <div class="container">
+        <div class="slider-inner-area owl-carousel slider-carousel">
+            {% for block in section.blocks %}
+                
+                <div class="single-slide-item slide-item-bg-">
+                    <img src=" {{ block.settings.image | img_url: '1140x700' }} " alt=" {{ block.settings.alt_text }} ">
+                    <div class="slider-content">
+                        <h1><span class="d-block"> {{ block.settings.slider_content_1 }} </span>{{ block.settings.slider_content_2 }}</h1>
+                    </div>
+                    <div class="slider-bottom-content">
+                        <h3>{{ block.settings.slider_count_number }}</h3>
+                        <h5> {{ block.settings.slider_title }} </h5>
+                        <p> {{ block.settings.slider_subtitle }} </p>
+                    </div>
+                </div> 
+
+            {% endfor %}
+        </div>
+    </div>
+</section><!-- end slider area -->
+
+{% schema %}
+{
+    "name": "Slideshow",
+    "max_blocks": 3,
+    "blocks": [
+        {
+            "name" : "Image Slide",
+            "type" : "Image",
+            "settings" : [
+                {
+                    "type" : "image_picker",
+                    "id" : "image",
+                    "label" : {
+                        "en" : "Image"
+                    }
+                },
+                {
+                    "type" : "text",
+                    "id" : "alt_text",
+                    "label" : {
+                        "en" : "Alter Text"
+                    },
+                    "default" : {
+                        "en" : "Slider Image"
+                    }
+                },
+                {
+                    "type" : "text",
+                    "id" : "slider_content_1",
+                    "label" : {
+                        "en" : "Slider Content Inside Span Tag"
+                    },
+                    "default" : {
+                        "en" : "New"
+                    }
+                },
+                {
+                    "type" : "text",
+                    "id" : "slider_content_2",
+                    "label" : {
+                        "en" : "Slider Content"
+                    },
+                    "default" : {
+                        "en" : " This Week"
+                    }
+                },
+                {
+                    "type" : "text",
+                    "id" : "slider_count_number",
+                    "label" : {
+                        "en" : "Slider Counter Number"
+                    },
+                    "default" : {
+                        "en" : "1/3"
+                    }
+                },
+                {
+                    "type" : "text",
+                    "id" : "slider_title",
+                    "label" : {
+                        "en" : "Slider Title"
+                    },
+                    "default" : {
+                        "en" : "spring girls"
+                    }
+                },
+                {
+                    "type" : "text",
+                    "id" : "slider_subtitle",
+                    "label" : {
+                        "en" : "Slider Subtitle"
+                    },
+                    "default" : {
+                        "en" : "LookBook2015"
+                    }
+                }
+            ]
+        }
+    ],
+    "presets" : [
+        {
+            "name" : {
+                "en" : "Slideshow"
+            },
+            "category" : {
+                "en" : "Image"
+            },
+            "blocks" : [
+                {
+                    "type" : "Image"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

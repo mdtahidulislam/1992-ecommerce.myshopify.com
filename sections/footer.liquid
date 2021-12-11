@@ -1,0 +1,79 @@
+<div class="footer">
+    <div class="container">
+        <div class="row">
+
+            {% for block in section.blocks %}
+                <div class="col-lg-3">
+
+                    {% case block.type %}
+
+                        {% when 'footer_logo' %}
+                            <div class="footer__logo">
+                                {% if block.settings.footer_logo != blank %}
+                                    <img src="{{ block.settings.footer_logo | img_url }}" alt="Footer Logo" class="footer__logo-img">
+                                {% else %}
+                                    <h1>{{ shop.name}}</h1>
+                                {% endif %}        
+                            </div>
+                            <div class="footer__content">
+                                <p>{{ block.settings.footer_content}}</p>
+                            </div>
+                        
+                        {% when 'footer_quick_link' %}
+                            <h4 class="footer__link-header">{{ block.settings.footer_link_header }}</h4>
+                            {% for link in linklists[block.settings.menu].links %}
+                                <a href="{{ link.url }}">{{ link.title }}</a>
+                            {% endfor %}
+                    
+                    {% endcase %}
+
+                </div>        
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+{
+    "name": {
+        "en" : "Footer"
+    },
+    "blocks" : [
+        {
+            "name"     : "Footer Logo",
+            "type"     : "footer_logo",
+            "settings" : [
+                {
+                    "type"  : "image_picker",
+                    "id"    : "footer_logo",
+                    "label" : "Upoload Logo"
+                },
+                {
+                    "type"    : "text",
+                    "id"      : "footer_content",
+                    "label"   : "Footer Content",
+                    "default" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim, optio deleniti! Dignissimos nam eum veritatis?"
+                }
+            ]
+        },
+        {
+            "name"     : "Footer Quick Link",
+            "type"     : "footer_quick_link",
+            "settings" : [
+                {
+                    "type"    : "text",
+                    "id"      : "footer_link_header",
+                    "label"   : "Footer Link Header",
+                    "default" : "Quick Links"
+                },
+                {
+                    "type"    : "link_list",
+                    "id"      : "menu",
+                    "label"   : "Footer Menu"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

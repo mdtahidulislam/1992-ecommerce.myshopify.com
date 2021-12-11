@@ -1,0 +1,64 @@
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="backto-homepage">
+        <a href="/"><i class="fa fa-caret-left"></i> Back</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="product-thumb">
+        <div class="product-thumb__top">
+          <div class="imgBox">
+            <img src="{{ featured_image.src | img_url: 'large'}}" alt="{{ featured_image.alt | escape }}">
+          </div>
+        </div>
+        <div class="product-thumb__bottom">
+          {% for image in product.images %}
+
+            <div class="product-thumb__img">
+              <a href=" {{ image.src | img_url: 'large'}} " target="imgBox">
+                <img src="{{ image.src | img_url: 'compact'}}" alt="{{ image.alt | escape }}">
+              </a>
+            </div>
+
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="product-info">
+        <h3 class="product-title"> {{ product.title }} </h3>
+        <p class="product-price"> {{ product.price | money }} </p>
+        <p class="product-description"> {{ product.description }} </p>
+      </div>
+      <div class="product-purchase">
+        <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+          <select name="id" id="productSelect">
+            {% for variant in product.variants %}
+              {% if variant.available %}
+                <option value="{{ variant.id }}">
+                  {{ variant.title }} - {{ variant.price | money_with_currency }}
+                </option>
+              {% else %}
+                <option disabled="disabled">
+                  {{ variant.title }} - sold out
+                </option>
+              {% endif %}
+            {% endfor %}
+          </select>
+          <!-- {{ current_variant.price | money }} -->
+          <!-- <label for="Quantity">quantity</label> -->
+          <input type="number" id="Quantity" name="quantity" value="1" min="1">
+          <button type="submit" name="add" id="AddToCart">Add to cart</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
