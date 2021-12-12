@@ -168,7 +168,12 @@ cancelBtn.addEventListener( 'click', ()=>{
   login.classList.remove('d-none')
 });
 
-
-
+// collection product modal
+const productInfoAnchor = document.querySelectorAll('#productInfoAnchor');
+productInfoAnchor.forEach( (item) => {
+  item.addEventListener('click', (event) =>{
+    console.log('clicked');
+  });
+});
 
 })(jQuery);

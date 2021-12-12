@@ -1,5 +1,27 @@
-{% paginate collection.products by 2 %}
-  <h1>{{ collection.title }}</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-5">{{ collection.title }}</h1>
+    </div>
+  </div>
+  <div class="row">
+    {% for product in collection.products %}
+      <div class="col-md-4 text-center mb-4">
+        <div class="card collection-card">
+          {% unless product.available %}<strong class="sold-ribbon">sold out</strong>{% endunless %}
+          <a href="#" id="productInfoAnchor">
+            <img class="img-fluid" src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+          </a>
+          <p>{{ product.title }}</p>
+          <span class="mb-4">{{ product.price | money }}</span>
+        </div>
+      </div>
+    {% else %}
+      <p>no matches</p>
+    {% endfor %}
+  </div>
+</div>
+<!-- {% paginate collection.products by 2 %}
   {% for product in collection.products %}
     <div>
       <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
@@ -15,4 +37,4 @@
   {% if paginate.pages > 1 %}
     {{ paginate | default_pagination }}
   {% endif %}
-{% endpaginate %}
+{% endpaginate %} -->

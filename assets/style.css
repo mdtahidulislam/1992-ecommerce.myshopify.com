@@ -23,6 +23,7 @@
     09. Sale end area css
     10. Footer area css
     11. sidebar registration
+    12. collection page css
 
 -----------------------------------------------------------------------------------*/
 /*----------------------------------------*/
@@ -1649,4 +1650,19 @@ input[type="submit"] {
   background-size: cover;
   background-position: center;
   background-color: #ddd;
+}
+
+/*----------------------------------------*/
+/*  12. collection page
+/*----------------------------------------*/
+/* sold out ribbon */
+.card.collection-card {
+  position: relative;
+}
+
+strong.sold-ribbon {
+  position: absolute;
+  top: 0;
+  background: #999;
+  padding: 10px;
 }
