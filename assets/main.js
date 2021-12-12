@@ -176,3 +176,4 @@ productInfoAnchor.forEach( (item) => {
     console.log('clicked');
   });
 });
+console.log('hello');
