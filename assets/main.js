@@ -167,6 +167,7 @@ cancelBtn.addEventListener( 'click', ()=>{
   recPass.classList.add('d-none')
   login.classList.remove('d-none')
 });
+})(jQuery);
 
 // collection product modal
 const productInfoAnchor = document.querySelectorAll('#productInfoAnchor');
@@ -175,5 +176,3 @@ productInfoAnchor.forEach( (item) => {
     console.log('clicked');
   });
 });
-
-})(jQuery);
