@@ -1,3 +1,13 @@
+// collection product modal
+const productInfoAnchor = document.querySelectorAll('#productInfoAnchor');
+productInfoAnchor.forEach( (item) => {
+  item.addEventListener('click', (event) =>{
+    console.log('clicked');
+  });
+});
+console.log('hello');
+
+
 (function ($) {
 	"use strict";
   $(document).ready(function(){
@@ -169,11 +179,3 @@ cancelBtn.addEventListener( 'click', ()=>{
 });
 })(jQuery);
 
-// collection product modal
-const productInfoAnchor = document.querySelectorAll('#productInfoAnchor');
-productInfoAnchor.forEach( (item) => {
-  item.addEventListener('click', (event) =>{
-    console.log('clicked');
-  });
-});
-console.log('hello');
