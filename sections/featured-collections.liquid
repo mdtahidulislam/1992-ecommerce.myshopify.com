@@ -54,6 +54,7 @@
 
 
 <!--product form-->
+{%- comment -%}
 {% assign myvariant = product.selected_or_first_available_variant %}
 <form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-{{ product.handle }}">
 
@@ -159,6 +160,7 @@
     <!--end product add to cart-->
 
 </form>
+{%- endcomment -%}
 <!--end product form-->
 
 
