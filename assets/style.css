@@ -1666,3 +1666,29 @@ strong.sold-ribbon {
   background: #999;
   padding: 10px;
 }
+
+#productInfoModal .modal-dialog {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#productInfoTitle {
+  font-size: 40px;
+  line-height: 50px;
+}
+
+/* pagination */
+.pagination span {
+  font-size: 18px;
+  background: #ccc;
+  margin: 0 5px;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.pagination span:hover {
+  background: #ddd;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}

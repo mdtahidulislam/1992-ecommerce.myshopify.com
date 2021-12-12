@@ -1,8 +1,33 @@
 // collection product modal
 const productInfoAnchor = document.querySelectorAll('#productInfoAnchor');
+const productInfoModal = new bootstrap.Modal(document.getElementById('productInfoModal'), {});
+
 productInfoAnchor.forEach( (item) => {
   item.addEventListener('click', (event) =>{
-    console.log('clicked');
+
+    // get product
+    let productHandle = item.getAttribute('product-handle')
+    let url = `/products/${productHandle}.js`;
+
+    // fetch product 
+    fetch(url)
+    .then( res => res.json())
+    .then( data => {
+      console.log(data);
+      document.getElementById('productInfoImg').src = data.images[0];
+      document.getElementById('productInfoTitle').innerHTML = data.title;
+      document.getElementById('productInfoPrice').innerHTML = item.getAttribute('product-price');
+      document.getElementById('productInfoDescription').innerHTML = data.description;
+      // open modal
+      productInfoModal.show();
+      // closemodal
+      const closeBtn = document.querySelector('.close');
+      closeBtn.addEventListener('click',() => {
+        productInfoModal.hide();
+      });
+    })
+
+    
   });
 });
 console.log('hello');
