@@ -14,15 +14,15 @@
       <div class="product-thumb">
         <div class="product-thumb__top">
           <div class="imgBox">
-            <img src="{{ featured_image.src | img_url: 'large'}}" alt="{{ featured_image.alt | escape }}">
+            <img src="{{ featured_image.src | image_url }}" alt="{{ featured_image.alt | escape }}">
           </div>
         </div>
         <div class="product-thumb__bottom">
           {% for image in product.images %}
 
             <div class="product-thumb__img">
-              <a href=" {{ image.src | img_url: 'large'}} " target="imgBox">
-                <img src="{{ image.src | img_url: 'compact'}}" alt="{{ image.alt | escape }}">
+              <a href=" {{ image.src | image_url }} " target="imgBox">
+                <img src="{{ image.src | image_url }}" alt="{{ image.alt | escape }}">
               </a>
             </div>
 

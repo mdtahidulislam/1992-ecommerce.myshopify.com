@@ -26,8 +26,8 @@
                     </div>    
                     <div class="user-area">
                         {% if shop.customer_accounts_enabled %}
-                            {% if customer  %}
-                                <a href="/account"><i class="fa fa-user"></i> {{ customer.first_name | truncate:15 }}</a>
+                            {% if customer %}
+                                <a href="/account"><i class="fa fa-user"></i> {{ customer.first_name | truncate: 15 }}</a>
                             {% else %}
                                 <span class="signin">{{ 'Sign in' }}</span>
                                 <span class="register">{{ 'Register' }}</span>
@@ -44,7 +44,7 @@
             <div class="menu-area-container">
                 <a href="{{ shop.url }}" class="logo">
                     {% if section.settings.logo %}
-                        <img src="{{ section.settings.logo | img_url: '200x200' }}" alt="1992">
+                        <img src="{{ section.settings.logo | image_url: width: 200, height: 200 }}" alt="1992">
                     {% else %}
                         <h3>{{ shop.name }}</h3>
                     {% endif %}
@@ -76,7 +76,7 @@
                                                 <ul class="sub-submenu-items">
                                                     {% for childlink in linklists[block.settings.mega_cat_col_1].links %}
                                                         <li>
-                                                            <a href=" {{ childlink.url }} "> {{ childlink.title}} </a>
+                                                            <a href=" {{ childlink.url }} "> {{ childlink.title }} </a>
                                                         </li>
                                                     {% endfor %}
                                                 </ul>
@@ -99,7 +99,7 @@
                                     
                                     <div class="menu-brand">
                                             <a href="{{ section.settings.brand_link }}">
-                                                <img src=" {{ section.settings.brand_img | img_url}} " alt="">
+                                                <img src=" {{ section.settings.brand_img | image_url: width: 100, height: 100 }} " alt="">
                                                 <div class="trend-season">
                                                     <p class="collection-name">{{ section.settings.brand_name }}</p>
                                                     <span class="collection-text">{{ section.settings.brand_text }}</span>
@@ -144,20 +144,20 @@
         <ul id="mobile-menu-active">
             {% for link in linklists[section.settings.main_linklist].links %}
                 
-                {%- assign child_list_handle = link.title | handleize -%}
+                
                 {% comment %}
                 Check if third-level nav exists on each parent link.
                 {% endcomment %}
                 {%- assign three_level_nav = false -%}
                 {% if link.links != blank %}
                     {% if link.levels == 2 %}
-                        {%- assign three_level_nav = true -%}
+                        
                     {% endif %}
                 {% endif %}
 
                 {% if link.links != blank %}
                     <li class="mega-menu has-dropdown">
-                        <a href="#">{{link.title}}</a>
+                        <a href="#">{{ link.title }}</a>
                         <ul class="submenu">
                             <li class="menu-catagories has-dropdown-1">
                                 <a href="#" class="submenu-title">Categories</a>
@@ -166,7 +166,7 @@
                                         <ul class="sub-submenu-items">
                                             {% for childlink in linklists[block.settings.mega_cat_col_1].links %}
                                                 <li>
-                                                    <a href=" {{ childlink.url }} "> {{ childlink.title}} </a>
+                                                    <a href=" {{ childlink.url }} "> {{ childlink.title }} </a>
                                                 </li>
                                             {% endfor %}
                                         </ul>
@@ -180,7 +180,7 @@
                                         <ul class="sub-submenu-items">
                                             {% for childlink in linklists[block.settings.mega_collections].links %}
                                                 <li>
-                                                    <a href=" {{ childlink.url }} "> {{ childlink.title}} </a>
+                                                    <a href=" {{ childlink.url }} "> {{ childlink.title }} </a>
                                                 </li>
                                             {% endfor %}
                                         </ul>
@@ -189,7 +189,7 @@
                             </li>
                             <li class="menu-brand">
                                 <a href="{{ section.settings.brand_link }}">
-                                    <img src=" {{ section.settings.brand_img | img_url}} " alt="">
+                                    <img src=" {{ section.settings.brand_img | image_url: width: 100, height: 100 }} " alt="">
                                     <div class="trend-season">
                                         <p class="collection-name">{{ section.settings.brand_name }}</p>
                                         <span class="collection-text">{{ section.settings.brand_text }}</span>
@@ -200,7 +200,7 @@
                     </li>
                 {% else %}
                     <li>
-                        <a href="{{link.url}}">{{link.title}}</a>
+                        <a href="{{ link.url }}">{{ link.title }}</a>
                     </li>
                 {% endif %}
             {% endfor %}
@@ -212,84 +212,84 @@
 
 {% schema %}
 {
-    "name": {
-        "en":"Header"
+  "name": {
+    "en": "Header"
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_announcement",
+      "label": "Enable Announcement",
+      "default": true
     },
-    "settings": [
+    {
+      "type": "textarea",
+      "id": "announcement",
+      "label": "Announcement Text",
+      "default": {
+        "en": "Welcome to 1992 Online Shop! Let’s start to shopping NOW !!!"
+      }
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Upload Logo"
+    },
+    {
+      "type": "link_list",
+      "id": "main_linklist",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "id": "brand_img",
+      "type": "image_picker",
+      "label": "Brand Image"
+    },
+    {
+      "id": "brand_link",
+      "type": "url",
+      "label": "Brand Link"
+    },
+    {
+      "id": "brand_name",
+      "type": "text",
+      "label": "Brand Name",
+      "default": "Denim"
+    },
+    {
+      "id": "brand_text",
+      "type": "text",
+      "label": "Brand text",
+      "default": "Trends of Season"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Mega_Menu",
+      "name": "Mega Menu",
+      "limit": 3,
+      "settings": [
         {
-            "type": "checkbox",
-            "id": "enable_announcement",
-            "label": "Enable Announcement",
-            "default": true
-        },
-        {
-            "type": "textarea",
-            "id": "announcement",
-            "label": "Announcement Text",
-            "default": {
-                "en" : "Welcome to 1992 Online Shop! Let’s start to shopping NOW !!!"
-            }
-        },
-        {
-            "type": "image_picker",
-            "id": "logo",
-            "label": "Upload Logo"
-        },
-        {
-            "type"    : "link_list",
-            "id"      : "main_linklist",
-            "label"   : "Menu",
-            "default" : "main-menu"
-        },
-        {
-            "id": "brand_img",
-            "type": "image_picker",
-            "label": "Brand Image"
-        },
-        {
-            "id": "brand_link",
-            "type": "url",
-            "label": "Brand Link"
-        },
-        {
-            "id": "brand_name",
-            "type": "text",
-            "label": "Brand Name",
-            "default": "Denim"
-        },
-        {
-            "id": "brand_text",
-            "type": "text",
-            "label": "Brand text",
-            "default": "Trends of Season"
+          "id": "mega_cat_col_1",
+          "type": "link_list",
+          "label": "Categories"
         }
-    ],
-    "blocks": [
+      ]
+    },
+    {
+      "type": "mega_collections",
+      "name": "Mega Collections",
+      "limit": 1,
+      "settings": [
         {
-            "type": "Mega_Menu",
-            "name": "Mega Menu",
-            "limit": 3,
-            "settings": [
-                {
-                "id": "mega_cat_col_1",
-                "type": "link_list",
-                "label": "Categories"
-                }
-            ]
-        },
-        {
-            "type": "mega_collections",
-            "name": "Mega Collections",
-            "limit": 1,
-            "settings": [
-                {
-                "id": "mega_collections",
-                "type": "link_list",
-                "label": "Mega Collections"
-                }
-            ]
+          "id": "mega_collections",
+          "type": "link_list",
+          "label": "Mega Collections"
         }
-    ]
+      ]
+    }
+  ]
 }
 {% endschema %}
 

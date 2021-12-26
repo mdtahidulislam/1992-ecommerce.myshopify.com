@@ -10,13 +10,13 @@
                         {% when 'footer_logo' %}
                             <div class="footer__logo">
                                 {% if block.settings.footer_logo != blank %}
-                                    <img src="{{ block.settings.footer_logo | img_url }}" alt="Footer Logo" class="footer__logo-img">
+                                    <img src="{{ block.settings.footer_logo | image_url: width: 100, height: 100 }}" alt="Footer Logo" class="footer__logo-img">
                                 {% else %}
-                                    <h1>{{ shop.name}}</h1>
+                                    <h1>{{ shop.name }}</h1>
                                 {% endif %}        
                             </div>
                             <div class="footer__content">
-                                <p>{{ block.settings.footer_content}}</p>
+                                <p>{{ block.settings.footer_content }}</p>
                             </div>
                         
                         {% when 'footer_quick_link' %}
@@ -36,44 +36,44 @@
 
 {% schema %}
 {
-    "name": {
-        "en" : "Footer"
-    },
-    "blocks" : [
+  "name": {
+    "en": "Footer"
+  },
+  "blocks": [
+    {
+      "name": "Footer Logo",
+      "type": "footer_logo",
+      "settings": [
         {
-            "name"     : "Footer Logo",
-            "type"     : "footer_logo",
-            "settings" : [
-                {
-                    "type"  : "image_picker",
-                    "id"    : "footer_logo",
-                    "label" : "Upoload Logo"
-                },
-                {
-                    "type"    : "text",
-                    "id"      : "footer_content",
-                    "label"   : "Footer Content",
-                    "default" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim, optio deleniti! Dignissimos nam eum veritatis?"
-                }
-            ]
+          "type": "image_picker",
+          "id": "footer_logo",
+          "label": "Upoload Logo"
         },
         {
-            "name"     : "Footer Quick Link",
-            "type"     : "footer_quick_link",
-            "settings" : [
-                {
-                    "type"    : "text",
-                    "id"      : "footer_link_header",
-                    "label"   : "Footer Link Header",
-                    "default" : "Quick Links"
-                },
-                {
-                    "type"    : "link_list",
-                    "id"      : "menu",
-                    "label"   : "Footer Menu"
-                }
-            ]
+          "type": "text",
+          "id": "footer_content",
+          "label": "Footer Content",
+          "default": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim, optio deleniti! Dignissimos nam eum veritatis?"
         }
-    ]
+      ]
+    },
+    {
+      "name": "Footer Quick Link",
+      "type": "footer_quick_link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "footer_link_header",
+          "label": "Footer Link Header",
+          "default": "Quick Links"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Footer Menu"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

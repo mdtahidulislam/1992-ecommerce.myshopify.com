@@ -11,7 +11,7 @@
           <div class="card collection-card">
             {% unless product.available %}<strong class="sold-ribbon">sold out</strong>{% endunless %}
             <a href="#" id="productInfoAnchor" product-handle={{ product.handle }} product-price={{ product.price | money }}>
-              <img class="img-fluid" src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+              <img class="img-fluid" src="{{ product.featured_image.src | image_url }}" alt="{{ product.featured_image.alt | escape }}">
             </a>
             <p>{{ product.title }}</p>
             <span class="mb-4">{{ product.price | money }}</span>
@@ -39,7 +39,7 @@
       {{ product.price | money }}
       {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
       <a href="{{ product.url | within: collection }}">
-        <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+        <img src="{{ product.featured_image.src | image_url }}" alt="{{ product.featured_image.alt | escape }}">
       </a>
     </div>
   {% else %}

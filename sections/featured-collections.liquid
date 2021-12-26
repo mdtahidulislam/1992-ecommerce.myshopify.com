@@ -17,7 +17,7 @@
                     <div class="product-wrapper">
                         <div class="pro-img">
                             <a href="{{ product.url | within: collection }}">
-                                <img src=" {{ product.featured_image.src | img_url: 'medium' }}" class="img-fluid" alt="">
+                                <img src=" {{ product.featured_image.src | image_url }}" class="img-fluid" alt="">
                             </a>
                             <div class="product-action text-center">
                                 <div class="product-action-btn mb-20">
@@ -179,45 +179,45 @@
 </section>
 {% schema %}
 {
-    "name": {
-        "en" : "Featured Collection"
+  "name": {
+    "en": "Featured Collection"
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": {
+        "en": "Heading"
+      },
+      "default": {
+        "en": "New Items"
+      }
     },
-    "settings": [
-        {
-            "type": "text",
-            "id": "title",
-            "label": {
-                "en" : "Heading"
-            },
-            "default": {
-                "en" : "New Items"
-            }
-        },
-        {
-            "type": "text",
-            "id": "sub_title",
-            "label": {
-                "en" : "Sub Heading"
-            },
-            "default": {
-                "en" : "Spring & Summer 2015 Collection"
-            }
-        },
-        {
-            "type": "collection",
-            "id": "featured_collection",
-            "label": "Collection"
-        }
-    ],
-    "presets": [
-        {
-            "category": {
-                "en" : "Collection"
-            },
-            "name": {
-                "en" : "New Item"
-            }
-        }
-    ]
+    {
+      "type": "text",
+      "id": "sub_title",
+      "label": {
+        "en": "Sub Heading"
+      },
+      "default": {
+        "en": "Spring & Summer 2015 Collection"
+      }
+    },
+    {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "category": {
+        "en": "Collection"
+      },
+      "name": {
+        "en": "New Item"
+      }
+    }
+  ]
 }
 {% endschema %}
