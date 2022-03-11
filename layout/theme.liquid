@@ -19,7 +19,7 @@
   {{ 'responsive.css' | asset_url | stylesheet_tag }}
   
 </head>
-<body class="template-{{ request.page_type | handle }} {{ template | handleize }}">
+<body class="template-{{ request.page_type | handle }} {{ template | handleize}}">
 
 
 
@@ -34,13 +34,13 @@
 
 
   <div class="side-register">
-    {% render 'customer-registration' %}
-    {% render 'customer-login' %}
-    {% render 'customer-reset-password' %}
+    {% include 'customer-registration' %}
+    {% include 'customer-login' %}
+    {% include 'customer-reset-password' %}
   </div>  
 
 
-{% render 'ajax-cart' %}
+{% include 'ajax-cart' %}
   
   
   
@@ -49,11 +49,10 @@
   <script
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous">
-  </script>
+        crossorigin="anonymous"></script>
 
-
-
+<script>
+  {{ 'ajax-cart.js' | asset_url | script_tag }}
   {{ 'popper.min.js' | asset_url | script_tag }}
   {{ 'bootstrap.min.js' | asset_url | script_tag }}
   {{ 'currencies.min.js' | asset_url | script_tag }}

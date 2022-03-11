@@ -23,7 +23,6 @@
     09. Sale end area css
     10. Footer area css
     11. sidebar registration
-    12. collection page css
 
 -----------------------------------------------------------------------------------*/
 /*----------------------------------------*/
@@ -1650,45 +1649,4 @@ input[type="submit"] {
   background-size: cover;
   background-position: center;
   background-color: #ddd;
-}
-
-/*----------------------------------------*/
-/*  12. collection page
-/*----------------------------------------*/
-/* sold out ribbon */
-.card.collection-card {
-  position: relative;
-}
-
-strong.sold-ribbon {
-  position: absolute;
-  top: 0;
-  background: #999;
-  padding: 10px;
-}
-
-#productInfoModal .modal-dialog {
-  max-width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#productInfoTitle {
-  font-size: 40px;
-  line-height: 50px;
-}
-
-/* pagination */
-.pagination span {
-  font-size: 18px;
-  background: #ccc;
-  margin: 0 5px;
-  padding: 5px 10px;
-  border-radius: 3px;
-}
-
-.pagination span:hover {
-  background: #ddd;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
 }

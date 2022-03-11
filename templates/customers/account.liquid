@@ -24,7 +24,7 @@
          </div>
          <div class="col-12 col-md-9">
          <div class="theiaStickySidebar">
-             <h5 class="mb-3">Hello <strong>{{ customer.name  }}</strong> (not <strong>{{ customer.name}}</strong> ? <a href="/account/logout">Log out</a>)
+             <h5 class="mb-3">Hello <strong>{{ customer.name}}</strong> (not <strong>{{ customer.name}}</strong> ? <a href="/account/logout">Log out</a>)
              </h5>
             <h4 class="mb-3"><strong>Order History</strong></h4>
             {% paginate customer.orders by 20 %}
@@ -74,7 +74,7 @@
                     <tbody>
                     <tr>
                         <td class="text-left"><strong>Name:</strong></td>
-                        <td>{{ customer.name }}</td>
+                        <td>{{ customer.name}}</td>
                     </tr>
                     <tr>
                         <td class="text-left"><strong>E-mail:</strong></td>

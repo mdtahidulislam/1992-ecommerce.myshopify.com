@@ -45,7 +45,7 @@
                             <i class="fas fa-angle-double-right"></i>
                         </a>
                     </div>
-                    <img src=" {{ section.settings.image | image_url: width: 470, height: 630 }} " alt=" {{ section.settings.image_alt }} " class="lookbook-img">
+                    <img src=" {{ section.settings.image | img_url: '470x630' }} " alt=" {{ section.settings.image_alt }} " class="lookbook-img">
                 </div>
             </div>
             
@@ -59,96 +59,93 @@
 
 {% schema %}
 {
-  "name": {
-    "en": "Video CTA"
-  },
-  "settings": [
-    {
-      "type": "select",
-      "id": "layout",
-      "label": "Video position",
-      "default": "right",
-      "options": [
+    "name" : {
+        "en" : "Video CTA"
+    },
+    "settings" : [
         {
-          "value": "left",
-          "label": "Left side"
+            "type": "select",
+            "id": "layout",
+            "label": "Video position",
+            "default": "right",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left side"
+                },
+                {
+                    "value": "right",
+                    "label": "Right side"
+                }
+            ]
         },
         {
-          "value": "right",
-          "label": "Right side"
+            "type": "video_url",
+            "id": "video_url",
+            "label": "Video Link",
+            "accept": ["youtube", "vimeo"],
+            "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        },
+        {
+            "type": "text",
+            "id": "video_title",
+            "label": "Video Title",
+            "default": {
+                "en" : "Spring grils video campaign 2015"
+            }
+        },
+        {
+            "type": "text",
+            "id": "video_model",
+            "label": "Video Model",
+            "default": {
+                "en" : "Models: Alicia, Emily, Heather & Molly"
+            }
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Upload Image"
+        },
+        {
+            "type": "text",
+            "id": "image_title",
+            "label": "Image Title",
+            "default": {
+                "en" : "Spring Girls"
+            }
+        },
+        {
+            "type": "text",
+            "id": "image_subtitle",
+            "label": "Image Subtitle",
+            "default": {
+                "en" : "Girl Lookbook 2015"
+            }
+        },
+        {
+            "type": "text",
+            "id": "image_alt",
+            "label": "Image Alter Text",
+            "default": {
+                "en" : "Image"
+            }
+        },
+        {
+            "type": "url",
+            "id": "image_link",
+            "label": "Link"
         }
-      ]
-    },
-    {
-      "type": "video_url",
-      "id": "video_url",
-      "label": "Video Link",
-      "accept": [
-        "youtube",
-        "vimeo"
-      ],
-      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
-    },
-    {
-      "type": "text",
-      "id": "video_title",
-      "label": "Video Title",
-      "default": {
-        "en": "Spring grils video campaign 2015"
-      }
-    },
-    {
-      "type": "text",
-      "id": "video_model",
-      "label": "Video Model",
-      "default": {
-        "en": "Models: Alicia, Emily, Heather & Molly"
-      }
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Upload Image"
-    },
-    {
-      "type": "text",
-      "id": "image_title",
-      "label": "Image Title",
-      "default": {
-        "en": "Spring Girls"
-      }
-    },
-    {
-      "type": "text",
-      "id": "image_subtitle",
-      "label": "Image Subtitle",
-      "default": {
-        "en": "Girl Lookbook 2015"
-      }
-    },
-    {
-      "type": "text",
-      "id": "image_alt",
-      "label": "Image Alter Text",
-      "default": {
-        "en": "Image"
-      }
-    },
-    {
-      "type": "url",
-      "id": "image_link",
-      "label": "Link"
-    }
-  ],
-  "presets": [
-    {
-      "name": {
-        "en": "Video with Image"
-      },
-      "category": {
-        "en": "Image"
-      }
-    }
-  ]
+    ],
+    "presets": [
+        {
+            "name": {
+                "en": "Video with Image"
+            }, 
+            "category": {
+                "en": "Image"
+            }
+        }
+    ]
 }
 {% endschema %}
