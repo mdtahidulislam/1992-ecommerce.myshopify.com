@@ -106,15 +106,36 @@
     },
     "blocks" : [
         {
-            "name"     : "Footer Services",
-            "type"     : "FooterServices",
-            "limit"    : 3,
+            "name"     : "Footer Logo",
+            "type"     : "footer_logo",
             "settings" : [
                 {
-                    "type" : "text",
-                    "id" : "service-title",
-                    "label" : "Service Title",
-                    "default": "Service Title"
+                    "type"  : "image_picker",
+                    "id"    : "footer_logo",
+                    "label" : "Upoload Logo"
+                },
+                {
+                    "type"    : "text",
+                    "id"      : "footer_content",
+                    "label"   : "Footer Content",
+                    "default" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim, optio deleniti! Dignissimos nam eum veritatis?"
+                }
+            ]
+        },
+        {
+            "name"     : "Footer Quick Link",
+            "type"     : "footer_quick_link",
+            "settings" : [
+                {
+                    "type"    : "text",
+                    "id"      : "footer_link_header",
+                    "label"   : "Footer Link Header",
+                    "default" : "Quick Links"
+                },
+                {
+                    "type"    : "link_list",
+                    "id"      : "menu",
+                    "label"   : "Footer Menu"
                 }
             ]
         }
