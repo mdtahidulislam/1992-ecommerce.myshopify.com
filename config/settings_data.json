@@ -48,6 +48,37 @@
       },
       "footer": {
         "type": "footer",
+        "blocks": {
+          "98ed76fd-3167-410e-af32-41dc2aa358e7": {
+            "type": "footerServices",
+            "settings": {
+              "service-title": "Service Title",
+              "service-subtitle": "Service Subtitle",
+              "service-link": ""
+            }
+          },
+          "a31280c6-62ad-49be-9824-0f33fe6da5bd": {
+            "type": "footerServices",
+            "settings": {
+              "service-title": "Service Title",
+              "service-subtitle": "Service Subtitle",
+              "service-link": ""
+            }
+          },
+          "d2d8dd50-9471-47b5-a58f-9f914250cd24": {
+            "type": "footerServices",
+            "settings": {
+              "service-title": "Service Title",
+              "service-subtitle": "Service Subtitle",
+              "service-link": ""
+            }
+          }
+        },
+        "block_order": [
+          "98ed76fd-3167-410e-af32-41dc2aa358e7",
+          "a31280c6-62ad-49be-9824-0f33fe6da5bd",
+          "d2d8dd50-9471-47b5-a58f-9f914250cd24"
+        ],
         "settings": {
         }
       },
