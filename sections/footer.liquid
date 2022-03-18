@@ -1,37 +1,102 @@
-<div class="footer">
+<footer class="footer-area">
     <div class="container">
-        <div class="row">
-
+        <div class="row section-area">
             {% for block in section.blocks %}
-                <div class="col-lg-3">
-
-                    {% case block.type %}
-
-                        {% when 'footer_logo' %}
-                            <div class="footer__logo">
-                                {% if block.settings.footer_logo != blank %}
-                                    <img src="{{ block.settings.footer_logo | img_url }}" alt="Footer Logo" class="footer__logo-img">
-                                {% else %}
-                                    <h1>{{ shop.name}}</h1>
-                                {% endif %}        
-                            </div>
-                            <div class="footer__content">
-                                <p>{{ block.settings.footer_content}}</p>
-                            </div>
-                        
-                        {% when 'footer_quick_link' %}
-                            <h4 class="footer__link-header">{{ block.settings.footer_link_header }}</h4>
-                            {% for link in linklists[block.settings.menu].links %}
-                                <a href="{{ link.url }}">{{ link.title }}</a>
-                            {% endfor %}
-                    
-                    {% endcase %}
-
-                </div>        
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                    <div class="footer-service">
+                        <h4 class="footer-service-title">{{ block.settings.service-title }}</h4>
+                        <p class="footer-service-subtitle">For standard orders over 50 USD</p>
+                        <a href="#" class="footer-service-link">More info here <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
             {% endfor %}
         </div>
+        <div class="newsletter-area">
+            <div class="row">
+                <div class="col-xl-8 col-lg-7 col-md-7">
+                    <div class="newsletter-box">
+                        <div class="newsletter-content">
+                            <h2 class="newsletter-title">Newsletter</h2>
+                            <form action="" class="newsletter-form">
+                                <input type="email" class="email" placeholder="Enter email address">
+                                <button class="submit-btn">Submit</button>
+                            </form>
+                            <p class="newsletter-para"><span class="d-md-block d-sm-inline">Sign up to receive the
+                                    lastest fashion, trend</span>and culture via email and get exclusive offers from
+                                1992’s Shop.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4  col-lg-5 col-md-5">
+                    <div class="insta-wrapper">
+                        <div class="row">
+                            <div class="col-4">
+                                <a href="#" class="insta-img-link"><img src="{{ 'insta.jpg' | img_url: 'medium' }}" alt=""></a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#" class="insta-img-link"><img src="assets/img/insta.jpg" alt=""></a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#" class="insta-img-link"><img src="assets/img/insta.jpg" alt=""></a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#" class="insta-img-link"><img src="assets/img/insta.jpg" alt=""></a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#" class="insta-img-link"><img src="assets/img/insta.jpg" alt=""></a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#" class="insta-img-link"><img src="assets/img/insta.jpg" alt=""></a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#" class="insta-img-link"><img src="assets/img/insta.jpg" alt=""></a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#" class="insta-img-link"><img src="assets/img/insta.jpg" alt=""></a>
+                            </div>
+                            <div class="col-4">
+                                <a href="#" class="insta-img-link"><img src="assets/img/insta.jpg" alt=""></a>
+                            </div>
+                            <span class="insta-bottom-text">
+                                <i class="fab fa-instagram"></i>@1992shop_online
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="footer-bottom-inner">
+                        <div class="footer-left-menu">
+                            <ul>
+                                <li><a href="#"><img src="assets/img/logo.png" alt=""></a></li>
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">Our Stores</a></li>
+                                <li><a href="#">iOS &amp; Android Apps</a></li>
+                            </ul>
+                        </div>
+                        <div class="scroll-to-top">
+                            <a href="#"><i class="fas fa-arrow-up"></i></a>
+                        </div>
+                        <div class="footer-right-menu">
+                            <ul>
+                                <li><a href="#">FAQs</a></li>
+                                <li><a href="#">Size Guide</a></li>
+                                <li><a href="#">Delivery Info</a></li>
+                                <li><a href="#">Return Info</a></li>
+                                <li><a href="#">Discount</a></li>
+                                <li><a href="#">Gift</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</footer>
 
 
 {% schema %}
@@ -41,36 +106,15 @@
     },
     "blocks" : [
         {
-            "name"     : "Footer Logo",
-            "type"     : "footer_logo",
+            "name"     : "Footer Services",
+            "type"     : "FooterServices",
+            "limit"    : 3,
             "settings" : [
                 {
-                    "type"  : "image_picker",
-                    "id"    : "footer_logo",
-                    "label" : "Upoload Logo"
-                },
-                {
-                    "type"    : "text",
-                    "id"      : "footer_content",
-                    "label"   : "Footer Content",
-                    "default" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim, optio deleniti! Dignissimos nam eum veritatis?"
-                }
-            ]
-        },
-        {
-            "name"     : "Footer Quick Link",
-            "type"     : "footer_quick_link",
-            "settings" : [
-                {
-                    "type"    : "text",
-                    "id"      : "footer_link_header",
-                    "label"   : "Footer Link Header",
-                    "default" : "Quick Links"
-                },
-                {
-                    "type"    : "link_list",
-                    "id"      : "menu",
-                    "label"   : "Footer Menu"
+                    "type" : "text",
+                    "id" : "service-title",
+                    "label" : "Service Title",
+                    "default": "Service Title"
                 }
             ]
         }
