@@ -48,18 +48,6 @@
       },
       "footer": {
         "type": "footer",
-        "blocks": {
-          "77f6dc6f-5cae-4622-972d-413c6a3c844c": {
-            "type": "footer_logo",
-            "settings": {
-              "footer_logo": "shopify:\/\/shop_images\/logo.png",
-              "footer_content": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim, optio deleniti! Dignissimos nam eum veritatis?"
-            }
-          }
-        },
-        "block_order": [
-          "77f6dc6f-5cae-4622-972d-413c6a3c844c"
-        ],
         "settings": {
         }
       },
