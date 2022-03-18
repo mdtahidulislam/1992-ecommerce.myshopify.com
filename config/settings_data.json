@@ -54,12 +54,30 @@
             "settings": {
               "service-title": "FREE SHIPPING",
               "service-subtitle": "For standard orders over 50 USD",
+              "service-link": "#"
+            }
+          },
+          "7f745777-661e-4c5e-82e3-c1d838dfc64f": {
+            "type": "footerServices",
+            "settings": {
+              "service-title": "FREE RETURNS",
+              "service-subtitle": "For standard orders in 30 days",
+              "service-link": "#"
+            }
+          },
+          "26912caa-c919-4f41-9ae1-0a439e79185a": {
+            "type": "footerServices",
+            "settings": {
+              "service-title": "Service Title",
+              "service-subtitle": "For standard orders over 50 USD",
               "service-link": ""
             }
           }
         },
         "block_order": [
-          "d51d0ec2-0c50-4561-97f6-24f5ab5e43a8"
+          "d51d0ec2-0c50-4561-97f6-24f5ab5e43a8",
+          "7f745777-661e-4c5e-82e3-c1d838dfc64f",
+          "26912caa-c919-4f41-9ae1-0a439e79185a"
         ],
         "settings": {
         }
