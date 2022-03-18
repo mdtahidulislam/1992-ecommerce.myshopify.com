@@ -1,27 +1,15 @@
 <footer class="footer-area">
     <div class="container">
         <div class="row section-area">
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                <div class="footer-service">
-                    <h4 class="footer-service-title">Free shipping</h4>
-                    <p class="footer-service-subtitle">For standard orders over 50 USD</p>
-                    <a href="#" class="footer-service-link">More info here <i class="fas fa-chevron-right"></i></a>
+            {% for block in section.blocks %}
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                    <div class="footer-service">
+                        <h4 class="footer-service-title">{{ block.settings.service-title }}</h4>
+                        <p class="footer-service-subtitle">For standard orders over 50 USD</p>
+                        <a href="#" class="footer-service-link">More info here <i class="fas fa-chevron-right"></i></a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                <div class="footer-service">
-                    <h4 class="footer-service-title">Free returns</h4>
-                    <p class="footer-service-subtitle">For standard orders in 30 days</p>
-                    <a href="#" class="footer-service-link">More info here <i class="fas fa-chevron-right"></i></a>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                <div class="footer-service mb-0">
-                    <h4 class="footer-service-title">Free support</h4>
-                    <p class="footer-service-subtitle">Offer free 24/7 customer support</p>
-                    <a href="#" class="footer-service-link">More info here <i class="fas fa-chevron-right"></i></a>
-                </div>
-            </div>
+            {% endfor %}
         </div>
         <div class="newsletter-area">
             <div class="row">
