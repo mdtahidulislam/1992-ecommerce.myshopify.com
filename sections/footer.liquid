@@ -5,8 +5,8 @@
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
                     <div class="footer-service">
                         <h4 class="footer-service-title">{{ block.settings.service-title }}</h4>
-                        <p class="footer-service-subtitle">For standard orders over 50 USD</p>
-                        <a href="#" class="footer-service-link">More info here <i class="fas fa-chevron-right"></i></a>
+                        <p class="footer-service-subtitle">{{ block.settings.service-title }}</p>
+                        <a href="{{ block.settings.service-link }}" class="footer-service-link">More info here <i class="fas fa-chevron-right"></i></a>
                     </div>
                 </div>
             {% endfor %}
@@ -154,7 +154,7 @@
                     "type"    : "text",
                     "id"      : "service-subtitle",
                     "label"   : "Service Subtitle",
-                    "default" : "Service Subtitle"
+                    "default" : "For standard orders over 50 USD"
                 },
                 {
                     "type"    : "url",
