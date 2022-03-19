@@ -30,33 +30,15 @@
                 <div class="col-xl-4  col-lg-5 col-md-5">
                     <div class="insta-wrapper">
                         <div class="row">
-                            <div class="col-4">
-                                <a href="#" class="insta-img-link"><img src="{{ 'insta.jpg' | img_url: 'medium' }}" alt=""></a>
-                            </div>
-                            <div class="col-4">
-                                <a href="#" class="insta-img-link"><img src="assets/img/insta.jpg" alt=""></a>
-                            </div>
-                            <div class="col-4">
-                                <a href="#" class="insta-img-link"><img src="assets/img/insta.jpg" alt=""></a>
-                            </div>
-                            <div class="col-4">
-                                <a href="#" class="insta-img-link"><img src="assets/img/insta.jpg" alt=""></a>
-                            </div>
-                            <div class="col-4">
-                                <a href="#" class="insta-img-link"><img src="assets/img/insta.jpg" alt=""></a>
-                            </div>
-                            <div class="col-4">
-                                <a href="#" class="insta-img-link"><img src="assets/img/insta.jpg" alt=""></a>
-                            </div>
-                            <div class="col-4">
-                                <a href="#" class="insta-img-link"><img src="assets/img/insta.jpg" alt=""></a>
-                            </div>
-                            <div class="col-4">
-                                <a href="#" class="insta-img-link"><img src="assets/img/insta.jpg" alt=""></a>
-                            </div>
-                            <div class="col-4">
-                                <a href="#" class="insta-img-link"><img src="assets/img/insta.jpg" alt=""></a>
-                            </div>
+                            
+                            {% for block in section.blocks %}
+                                <div class="col-4">
+                                    <a href="{{ block.settings.insta-link }}" class="insta-img-link">
+                                        <img src="{{ block.settings.insta-img | img_url: 'medium' }}" alt="">
+                                    </a>
+                                </div>
+                            {% endfor %}
+
                             <span class="insta-bottom-text">
                                 <i class="fab fa-instagram"></i>@1992shop_online
                             </span>
@@ -106,23 +88,6 @@
     },
     "blocks" : [
         {
-            "name"     : "Footer Logo",
-            "type"     : "footer_logo",
-            "settings" : [
-                {
-                    "type"  : "image_picker",
-                    "id"    : "footer_logo",
-                    "label" : "Upoload Logo"
-                },
-                {
-                    "type"    : "text",
-                    "id"      : "footer_content",
-                    "label"   : "Footer Content",
-                    "default" : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim, optio deleniti! Dignissimos nam eum veritatis?"
-                }
-            ]
-        },
-        {
             "name"     : "Footer Quick Link",
             "type"     : "footer_quick_link",
             "settings" : [
@@ -160,6 +125,23 @@
                     "type"    : "url",
                     "id"      : "service-link",
                     "label"   : "Service Link"
+                }
+            ]
+        },
+        {
+            "name" : "Footer Insta",
+            "type" : "footerInsta",
+            "limit" : 9,
+            "settings" : [
+                {
+                    "type": "image_picker",
+                    "id": "insta-img",
+                    "label": "Insta Image"
+                },
+                {
+                    "type" : "url",
+                    "id" : "insta-link",
+                    "label" : "Insta Link"
                 }
             ]
         }
