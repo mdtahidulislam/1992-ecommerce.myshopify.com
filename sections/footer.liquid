@@ -35,11 +35,14 @@
                         <div class="row">
                             
                             {% for block in section.blocks %}
-                                <div class="col-4">
-                                    <a href="{{ block.settings.insta-link }}" class="insta-img-link">
-                                        <img src="{{ block.settings.insta-img | img_url: 'medium' }}" alt="">
-                                    </a>
-                                </div>
+                                {% case block.type %}
+                                    {% when 'footerInsta' %}
+                                        <div class="col-4">
+                                            <a href="{{ block.settings.insta-link }}" class="insta-img-link">
+                                                <img src="{{ block.settings.insta-img | img_url: 'medium' }}" alt="">
+                                            </a>
+                                        </div>
+                                {% endcase %}
                             {% endfor %}
 
                             <span class="insta-bottom-text">
