@@ -2,13 +2,16 @@
     <div class="container">
         <div class="row section-area">
             {% for block in section.blocks %}
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
-                    <div class="footer-service">
-                        <h4 class="footer-service-title">{{ block.settings.service-title }}</h4>
-                        <p class="footer-service-subtitle">{{ block.settings.service-subtitle }}</p>
-                        <a href="{{ block.settings.service-link }}" class="footer-service-link">More info here <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                </div>
+                {% case block.type %}
+                    {% when 'footerServices' %}
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                            <div class="footer-service">
+                                <h4 class="footer-service-title">{{ block.settings.service-title }}</h4>
+                                <p class="footer-service-subtitle">{{ block.settings.service-subtitle }}</p>
+                                <a href="{{ block.settings.service-link }}" class="footer-service-link">More info here <i class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                {% endcase %}
             {% endfor %}
         </div>
         <div class="newsletter-area">
