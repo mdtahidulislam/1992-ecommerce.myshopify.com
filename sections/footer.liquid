@@ -20,7 +20,7 @@
                     <div class="newsletter-box">
                         <div class="newsletter-content">
                             <h2 class="newsletter-title">Newsletter</h2>
-                            {% form 'customer', class:'newsletter-form', return_to: routes.root_url %}
+                            {% form 'customer', class:'newsletter-form' %}
                                 {{ form.errors | default_errors }}
                                 <input type="email" name="customer[email]" class="email" placeholder="Enter email address">
                                 <button class="submit-btn">Submit</button>
