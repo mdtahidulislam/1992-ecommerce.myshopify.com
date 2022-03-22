@@ -23,7 +23,7 @@
                             {% form 'customer', class:'newsletter-form', return_to: routes.root_url %}
                                 {{ form.errors | default_errors }}
                                 <input type="email" name="customer[email]" class="email" placeholder="Enter email address">
-                                <button class="submit-btn">Submit</button>
+                                <input type="submit" class="submit-btn" value="Submit" />
                             {% endform %}
                             <p class="newsletter-para"><span class="d-md-block d-sm-inline">Sign up to receive the
                                     lastest fashion, trend</span>and culture via email and get exclusive offers from
