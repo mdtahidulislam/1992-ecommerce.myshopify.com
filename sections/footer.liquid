@@ -20,11 +20,16 @@
                     <div class="newsletter-box">
                         <div class="newsletter-content">
                             <h2 class="newsletter-title">Newsletter</h2>
-                            {% form 'customer', class:'newsletter-form', return_to: routes.root_url %}
-                                {{ form.errors | default_errors }}
-                                <input type="email" name="customer[email]" class="email" placeholder="Enter email address">
-                                <input type="submit" class="submit-btn" value="Submit" />
-                            {% endform %}
+                            <form action="" class="newsletter-form" id="email_subscribe">
+                                <input type="hidden" name="g" value="R7BFTK">
+                                <input type="email" name="email" id="email" class="email" placeholder="Enter email address" value="">
+                                <button type="submit" class="submit-btn">Submit</button>
+                            </form>
+                            <div class="klaviyo_messages">
+                                <div class="success_message" style="display:none;">
+                                    <p class="thank_you">Thank you for signing up!</p>
+                                </div>
+                            </div>
                             <p class="newsletter-para"><span class="d-md-block d-sm-inline">Sign up to receive the
                                     lastest fashion, trend</span>and culture via email and get exclusive offers from
                                 1992’s Shop.</p>
