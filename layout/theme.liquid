@@ -54,10 +54,7 @@
   <script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
   <script type="text/javascript">
     KlaviyoSubscribe.attachToForms('#email_subscribe', {
-      hide_form_on_success: false,
-      content: {
-        success: "Thanks! Check your email for a confirmation."
-      },
+      custom_success_message: true,
       extra_properties: {
         $source: 'Home Page'
       }
