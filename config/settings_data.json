@@ -237,13 +237,19 @@
           "sub_title": "Spring & Summer 2015 Collection",
           "featured_collection": "new-items"
         }
+      },
+      "1648147946c0d70a1c": {
+        "type": "sales-season",
+        "settings": {
+        }
       }
     },
     "content_for_index": [
       "1605510607bca71571",
       "1605520842cf247fba",
       "160561821135914d32",
-      "160554618038654675"
+      "160554618038654675",
+      "1648147946c0d70a1c"
     ]
   },
   "presets": {
