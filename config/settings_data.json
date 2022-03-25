@@ -238,9 +238,12 @@
           "featured_collection": "new-items"
         }
       },
-      "16481489224aaf44ff": {
+      "1648150228af53de91": {
         "type": "sales-season",
         "settings": {
+          "text-1": "Sale",
+          "text-2": "End Seasons",
+          "image": "shopify:\/\/shop_images\/megamenu-banner.png"
         }
       }
     },
@@ -249,7 +252,7 @@
       "1605520842cf247fba",
       "160561821135914d32",
       "160554618038654675",
-      "16481489224aaf44ff"
+      "1648150228af53de91"
     ]
   },
   "presets": {
