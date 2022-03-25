@@ -245,6 +245,14 @@
           "text-2": "End Seasons",
           "image": "shopify:\/\/shop_images\/megamenu-banner.png"
         }
+      },
+      "16481502349c37e5d4": {
+        "type": "featured-collections",
+        "settings": {
+          "title": "Hot Items",
+          "sub_title": "1992’s best seller products in this week",
+          "featured_collection": "hot-items"
+        }
       }
     },
     "content_for_index": [
@@ -252,6 +260,7 @@
       "1605520842cf247fba",
       "160561821135914d32",
       "160554618038654675",
+      "16481502349c37e5d4",
       "1648150228af53de91"
     ]
   },
