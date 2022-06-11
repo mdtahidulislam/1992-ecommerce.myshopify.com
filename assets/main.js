@@ -11,14 +11,10 @@
   show product modal 
 --------------------------------*/
 const productInfoAnchor = document.querySelectorAll('.productInfoAnchor');
-productInfoAnchor.forEach(item => {
-  console.log(item);
-});
-if ($('.productInfoAnchor') > 0) {
-  console.log('clicked');
-  $('.productInfoAnchor').click(function(e){
-    e.stopPropagation();
-    console.log('clicked');
+
+if ( productInfoAnchor > 0) {
+  productInfoAnchor.forEach(item => {
+    console.log(item);
   });
 }
 
