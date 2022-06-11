@@ -8,6 +8,15 @@
   })
 
 /*-------------------------------- 
+  show product modal 
+--------------------------------*/
+if ($('.productInfoAnchor') > 0) {
+  $('.productInfoAnchor').click(function(){
+    console.log('clicked');
+  });
+}
+
+/*-------------------------------- 
           slider carousel
 --------------------------------*/
 const nextIcon = '<i class="fas fa-arrow-right"></i>';
@@ -169,14 +178,7 @@ cancelBtn.addEventListener( 'click', ()=>{
 });
 
 
-/*-------------------------------- 
-  show product modal 
---------------------------------*/
-if ($('.productInfoAnchor') > 0) {
-  $('.productInfoAnchor').click(function(){
-    console.log('clicked');
-  });
-}
+
 
 
 })(jQuery);
