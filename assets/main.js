@@ -169,6 +169,14 @@ cancelBtn.addEventListener( 'click', ()=>{
 });
 
 
+/*-------------------------------- 
+  show product modal 
+--------------------------------*/
+if ($('#productInfoAnchor') > 0) {
+  $('#productInfoAnchor').click(function(){
+    console.log('clicked');
+  });
+}
 
 
 })(jQuery);
