@@ -11,6 +11,7 @@
   show product modal 
 --------------------------------*/
 if ($('.productInfoAnchor') > 0) {
+  console.log('clicked');
   $('.productInfoAnchor').click(function(){
     console.log('clicked');
   });
