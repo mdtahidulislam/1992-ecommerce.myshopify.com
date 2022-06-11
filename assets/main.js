@@ -12,7 +12,8 @@
 --------------------------------*/
 if ($('.productInfoAnchor') > 0) {
   console.log('clicked');
-  $('.productInfoAnchor').click(function(){
+  $('.productInfoAnchor').click(function(e){
+    e.stopPropagation();
     console.log('clicked');
   });
 }
