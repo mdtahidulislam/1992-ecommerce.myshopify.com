@@ -10,9 +10,10 @@
 /*-------------------------------- 
   show product modal 
 --------------------------------*/
-var productModal = new bootstrap.Modal($('#productInfoModal'), {});
+var productModal = new bootstrap.Modal(document.getElementById('productInfoModal'), {});
 if ($('.productInfoAnchor').length > 0) {
   $('.productInfoAnchor').click(function(e){
+    e.preventDefault(); // stop default behaviour of anchor tag
     productModal.show();
   });
 }
