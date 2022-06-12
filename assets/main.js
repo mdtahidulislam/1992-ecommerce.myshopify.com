@@ -10,11 +10,10 @@
 /*-------------------------------- 
   show product modal 
 --------------------------------*/
-const productInfoAnchor = document.querySelectorAll('.productInfoAnchor');
-
-if ( productInfoAnchor > 0) {
-  productInfoAnchor.forEach(item => {
-    console.log(item);
+var productModal = new bootstrap.Modal($('#productInfoModal'), {});
+if ($('.productInfoAnchor').length > 0) {
+  $('.productInfoAnchor').click(function(e){
+    productModal.show();
   });
 }
 
