@@ -21,7 +21,7 @@
                             </a>
                             <div class="product-action text-center">
                                 <div class="product-action-btn mb-20">
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Shoppingb Cart" class="productInfoAnchor" product-handle="{{ product.handle }}">
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Shoppingb Cart" class="productInfoAnchor" product-handle="{{ product.handle }}" product-price="{{ product.price | money }}">
                                         <i class="fas fa-shopping-cart"></i>
                                     </a>
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Wishlist">
@@ -70,9 +70,9 @@
                         <img src="" alt="" class="img-fluid" id="productInfoImg">
                     </div>
                     <div class="col-12 col-md-6">
-                        <h1 id="productInfoTitle"></h1>
-                        <h3 id="productInfoPrice"></h3>
-                        <p id="productInfoDescription"></p>
+                        <h3 id="productInfoTitle" class="mb-4"></h3>
+                        <h4 id="productInfoPrice" class="mb-4"></h4>
+                        <p id="productInfoDescription" class="mb-4"></p>
                     </div>
                 </div>
             </div>
