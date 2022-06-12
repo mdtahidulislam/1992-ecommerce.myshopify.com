@@ -14,6 +14,12 @@ var productModal = new bootstrap.Modal(document.getElementById('productInfoModal
 if ($('.productInfoAnchor').length > 0) {
   $('.productInfoAnchor').click(function(e){
     e.preventDefault(); // stop default behaviour of anchor tag
+    
+    // fetch product info using product API
+    let url = `${window.Shopify.routes.root}products/${$(this).attr('product-handle')}.js`;
+    fetch(url)
+      .then( res => res.json())
+      .then ( data => console.log(data));
     productModal.show();
   });
 }
