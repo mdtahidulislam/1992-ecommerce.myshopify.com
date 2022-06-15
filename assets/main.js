@@ -28,11 +28,56 @@ if ($('.productInfoAnchor').length > 0) {
         $('#productInfoPrice').text(`${$(this).attr('product-price')}`);
         $('#productInfoDescription').html(`${data.description}`);
 
+        // select product options
+        let variants = data.variants;
+        console.log(variants);
+        let productItemSelect = document.getElementById('productItemSelect');
+        $('#productItemSelect').find('option').remove().end();
+        variants.forEach((variant, index) =>{
+          productItemSelect.options[productItemSelect.options.length] = new Option(variant.option1, variant.id);
+        });
+
         // then load modal
         productModal.show();
       });
   });
 }
+
+/*-------------------------------- 
+  add to cart modal form
+--------------------------------*/
+$('#productModalForm').submit(function(e){
+  e.preventDefault();
+
+  // create form data
+  const formData = {
+    items: [
+      {
+        'id': $('#productItemSelect').val(),
+        'quantity': $('#productQuantity').val(),
+      }
+    ]
+  };
+  // add product to cart
+  let url = `${window.Shopify.routes.root}cart/add.js`;
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  })
+  .then(res => {
+    return res.json();
+  })
+  .then( data => 
+    alert('added product to cart'))
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+});
+        
+        
 
 /*-------------------------------- 
           slider carousel
